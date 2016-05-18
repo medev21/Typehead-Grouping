@@ -1,0 +1,9 @@
+/* Put your css in here */
+
+body { padding-top: 15px; }
+pre { margin-top: 10px; }
+.typeahead-group-header {
+  padding: 3px 20px;
+  border-bottom: 1px solid black;
+  font-weight: bold;
+}

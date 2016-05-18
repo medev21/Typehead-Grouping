@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <link data-require="bootstrap-css@*" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <script>
+      document.write('<base href="' + document.location + '" />');
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <script data-require="angular.js@1.2.x" src="https://code.angularjs.org/1.2.20/angular.js" data-semver="1.2.20"></script>
+    <script data-require="angular-ui-bootstrap@*" data-semver="0.11.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.min.js"></script>
+    <script data-require="angular-sanitize@*" data-semver="1.2.13" src="http://code.angularjs.org/1.2.13/angular-sanitize.js"></script>
+    <script data-require="lodash.js@*" data-semver="2.4.1" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <script src="app.js"></script>
+    <script type="text/ng-template" id="typeahead-item.html">
+      <div class="typeahead-group-header" ng-if="match.model.firstInGroup">Desc {{match.model.group}}</div>
+      <a>
+        <span ng-bind-html="match.label | typeaheadHighlight:query"></span>
+      </a>
+    </script>
+  </head>
+
+  <body ng-controller="MainCtrl" class="container-fluid">
+    <input type="text" class="form-control" placeholder="Users loaded from local database"
+        ng-model="selectedUser"
+        typeahead="user as user.name for user in getUsers($viewValue)"
+        typeahead-template-url="typeahead-item.html" />
+    <pre>{{selectedUser | json}}</pre>
+  </body>
+
+</html>
